@@ -33,7 +33,7 @@ Key differentiators:
 - **Compliance-first**: native investor eligibility, jurisdiction checks, Travel Rule data capture, and freeze/pause controls.
 - **Custody-assured**: oracle-verified attestations required before supply changes; deviation alerts handled automatically.
 - **PQC-ready**: hybrid Dilithium/Falcon + secp256k1 signatures, PQ TLS, and roadmap to PQ light clients so assets remain secure for decades.
-- **Automation-native**: OpenClaw agents bootstrap validators, configure compliance templates, and monitor the network 24/7.
+- **Automation-native**: agents bootstrap validators, configure compliance templates, and monitor the network 24/7.
 - **Private subchains**: tenant-specific execution layers inherit mainnet settlement security and compliance guardrails.
 
 ## 2. Market Landscape & Opportunity
@@ -172,7 +172,7 @@ graph TD
     SubchainStack -->|Sync Policies| ComplianceCore
     SubchainManager -->|Settlement| L1
 ```
-### 7.2 Automation (OpenClaw Agents)
+### 7.2 Automation (Agents)
 - **Bootstrap**: Build binaries, configure genesis, spin validators, and deploy compliance modules.
 - **Lifecycle Ops**: Manage onboarding, renewals, lockups, and investor communications.
 - **Monitoring**: Stream metrics to Grafana/Prometheus, trigger alerts, and open incident tickets.
