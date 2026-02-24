@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora Ledger Whitepaper</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --panel: rgba(10, 16, 32, 0.85);
+      --muted: #94a3b8;
+      --text: #f8fafc;
+      --accent: #38bdf8;
+      --accent-strong: #0ea5e9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 45%), var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+    header h1 {
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.08em;
+    }
+    header p { color: var(--muted); max-width: 720px; margin: 0.5rem auto; }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: 0 20px 60px rgba(2, 6, 23, 0.7);
+    }
+    section h2 {
+      margin-top: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+    ol, ul { margin-left: 1.2rem; color: var(--muted); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      color: var(--muted);
+    }
+    pre {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 1rem;
+      padding: 1rem;
+      overflow: auto;
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 640px) {
+      section { padding: 1.25rem; }
+      table { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p style="letter-spacing:0.5em;text-transform:uppercase;color:var(--muted);">NivoNexus</p>
+    <h1>Aurora Ledger Whitepaper</h1>
+    <p>Compliance-native, quantum-safe Layer 1 for institutional real-world assets.</p>
+    <p style="color:var(--accent);font-weight:600;">Last updated: 24 Feb 2026</p>
+  </header>
+  <main>
+    <section id="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li>Executive Summary</li>
+        <li>Market Landscape & Opportunity</li>
+        <li>Vision & Value Proposition</li>
+        <li>Technical Architecture</li>
+        <li>Compliance & Custody Framework</li>
+        <li>Security & PQC Roadmap</li>
+        <li>Tokenomics (AUR)</li>
+        <li>Roadmap & Execution Plan</li>
+        <li>Use of Funds</li>
+        <li>Governance & Operations</li>
+        <li>Risk & Mitigation</li>
+        <li>Appendix</li>
+      </ol>
+    </section>
+
+    <section id="executive-summary">
+      <h2>1 · Executive Summary</h2>
+      <p>Aurora Ledger is a Cosmos-SDK Layer 1 purpose-built for regulated RWAs. Developed by <strong>NivoNexus</strong>, it embeds compliance logic, custody attestations, and quantum-safe primitives directly into the protocol while remaining fully open-source. Aurora enables asset managers to launch tokenized funds, metals, credit products, or real-estate SPVs using a single governance/gas token (<code>AUR</code>) with transparent economics.</p>
+      <ul>
+        <li><strong>Compliance-by-design:</strong> investor eligibility, jurisdiction policies, freeze/pause controls.</li>
+        <li><strong>Custody transparency:</strong> oracle-verified attestations before supply changes.</li>
+        <li><strong>PQC roadmap:</strong> hybrid Dilithium/Falcon + secp256k1 signatures.</li>
+        <li><strong>Automation-first:</strong> OpenClaw agents deploy validators, configure compliance, monitor 24/7.</li>
+        <li><strong>Tenant subchains:</strong> dedicated execution environments inheriting settlement security.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2 · Market Landscape & Opportunity</h2>
+      <p>The tokenized asset market is projected to exceed <strong>$10T</strong> by 2030. Institutional adoption is gated by regulatory uncertainty, fragmented tooling, and security risks. Aurora Ledger addresses these pain points by providing compliance primitives, auditable custody proofs, and automated operations in a single chain.</p>
+      <ul>
+        <li><strong>Regulators:</strong> auditable, immutable compliance logs.</li>
+        <li><strong>Asset managers:</strong> template-driven issuance instead of bespoke code.</li>
+        <li><strong>Investors:</strong> predictable, gas-efficient interactions secured by open-source tooling.</li>
+        <li><strong>Custodians:</strong> built-in incentives for timely attestations and audits.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3 · Vision & Value Proposition</h2>
+      <p>Aurora Ledger aims to be the compliance-native settlement layer for institutional RWAs.</p>
+      <ul>
+        <li><strong>Trust:</strong> deterministic enforcement of policies reduces manual reviews.</li>
+        <li><strong>Transparency:</strong> open data on audit cadence, supply movements, oracle performance.</li>
+        <li><strong>Automation:</strong> agent-driven ops eliminate human error while preserving oversight.</li>
+        <li><strong>Future readiness:</strong> PQC and modular subchains adapt to new jurisdictions and assets.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4 · Technical Architecture</h2>
+      <pre><code>graph TD
+    subgraph Experience Layer
+        UI[Asset Manager Portal]
+        Wallets[Investor Wallets]
+    end
+
+    subgraph Control Layer
+        Agent[Automation Agent]
+        Tokenomics[AUR Governance + Treasury]
+    end
+
+    subgraph Core Chain
+        Registry[rwa_registry]
+        Compliance[compliance_core]
+        MintBurn[asset_mint_burn]
+        Oracles[oracle_bridge]
+        Bridge[migration_bridge]
+        Subchains[subchain_manager]
+    end
+
+    subgraph External
+        KYC[KYC/KYB Providers]
+        Custody[Custodians / Price Feeds]
+        Chains[Other L1s/L2s]
+        Tenants[Tenant Subchains]
+    end
+
+    UI --> Registry
+    UI --> Compliance
+    Wallets --> Tokenomics
+    Agent --> Compliance
+    Agent --> MintBurn
+    Agent --> Oracles
+    Agent --> Bridge
+    Agent --> Subchains
+    Registry --> Compliance
+    Compliance --> MintBurn
+    Compliance --> Bridge
+    Oracles --> MintBurn
+    Bridge --> Chains
+    Compliance --> KYC
+    MintBurn --> Custody
+    Subchains --> Tenants</code></pre>
+      <h3>4.1 Core Modules</h3>
+      <ul>
+        <li><strong>rwa_registry:</strong> metadata, legal references, custodians, audit cadence.</li>
+        <li><strong>compliance_core:</strong> KYC/KYB hashes, jurisdiction flags, investor tiers, freeze controls.</li>
+        <li><strong>asset_mint_burn:</strong> issuance/redemption gated by custody quorum + compliance approval.</li>
+        <li><strong>oracle_bridge:</strong> integrates OCR feeds & custody attestations; slashes stale operators.</li>
+        <li><strong>migration_bridge:</strong> ERC-1400 + ICS-20 adapters for cross-chain movement.</li>
+        <li><strong>subchain_manager:</strong> registers tenant subchains and enforces guardrails.</li>
+      </ul>
+      <h3>4.2 Automation Layer</h3>
+      <p>OpenClaw agents handle validator bootstrapping, compliance template deployment, monitoring, and alerting. Hooks integrate with Grafana/Prometheus and ticketing systems.</p>
+      <h3>4.3 Tenant Subchains</h3>
+      <p>Asset managers can request dedicated subchains (Cosmos consumer chains or optimistic rollups). Subchains inherit compliance policies from the main L1 and settle via shared security.</p>
+    </section>
+
+    <section>
+      <h2>5 · Compliance & Custody Framework</h2>
+      <ol>
+        <li><strong>Attestation Flow:</strong> investors complete KYC/KYB with approved providers; hashed credentials stored on-chain.</li>
+        <li><strong>Transfer Execution:</strong> every operation checks compliance rules (eligibility, caps, lockups).</li>
+        <li><strong>Custody Controls:</strong> oracle feeds ingest vault balances/NAV; mint/burn requires attestation quorum.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>6 · Security & PQC Roadmap</h2>
+      <ul>
+        <li>Hybrid signatures (secp256k1 + Dilithium/Falcon) for validators and key contracts.</li>
+        <li>PQC TLS on P2P links, roadmap for PQ light clients once specs finalize.</li>
+        <li>HSM-compatible key management with rotation policies enforced by automation agents.</li>
+        <li>Independent audits for chain, bridges, and automation before mainnet.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7 · Tokenomics (AUR)</h2>
+      <table>
+        <tr><th>Supply</th><td>1,000,000,000 AUR (fixed)</td></tr>
+        <tr><th>Utility</th><td>Gas fees, staking collateral, governance voting, compliance/oracle bonding, treasury contributions</td></tr>
+        <tr><th>Fee Routing</th><td>60% validators/stakers · 20% compliance/oracle operators · 20% treasury</td></tr>
+        <tr><th>Distribution</th><td>40% community & staking · 20% treasury · 20% strategic partners · 15% contributors/automation · 5% liquidity</td></tr>
+        <tr><th>Staking</th><td>Delegated PoS with slashing for double-signing, downtime, compliance breaches</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>8 · Roadmap & Execution Plan</h2>
+      <table>
+        <tr><th>Phase</th><th>Timeline</th><th>Highlights</th></tr>
+        <tr><td>Foundations</td><td>Q1–Q2 2026</td><td>Compliance schema, PQC prototype, automation agent v1, devnet, custody integrations</td></tr>
+        <tr><td>Testnet & Audits</td><td>Q3 2026</td><td>Public testnet, bridges (EVM/ICS-20), subchain registration, security audits</td></tr>
+        <tr><td>Mainnet Launch</td><td>Q4 2026</td><td>AUR distribution, treasury activation, first regulated issuances, insurance fund</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>9 · Use of Funds</h2>
+      <ul>
+        <li>40% Engineering & audits</li>
+        <li>25% Compliance & custody partnerships</li>
+        <li>15% Ecosystem & grants</li>
+        <li>15% Infrastructure & operations</li>
+        <li>5% Working capital</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>10 · Governance & Operations</h2>
+      <p>Initial multisig guardianship (NivoNexus + partners) handles upgrades and treasury spend, transitioning to on-chain governance post-mainnet. Automation agents operate under auditable playbooks with human oversight. Quarterly transparency reports cover treasury, compliance, custody, and roadmap metrics.</p>
+    </section>
+
+    <section>
+      <h2>11 · Risk & Mitigation</h2>
+      <table>
+        <tr><th>Risk</th><th>Mitigation</th></tr>
+        <tr><td>Regulatory shifts</td><td>Modular templates, legal advisory board, ability to freeze/pause series</td></tr>
+        <tr><td>Oracle/custody failures</td><td>Multi-source attestations, slashing, insurance fund, automated alerts</td></tr>
+        <tr><td>PQC adoption delays</td><td>Hybrid signatures, participation in standards bodies, staged rollout</td></tr>
+        <tr><td>Smart contract bugs</td><td>Multi-stage audits, formal verification, bug bounty</td></tr>
+        <tr><td>Liquidity constraints</td><td>Treasury-managed market making, incentives for early DEX/bridge partners</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>12 · Appendix</h2>
+      <ul>
+        <li>Glossary: RWAs, PQC, ICS-20, OCR, etc.</li>
+        <li>Partner programs: onboarding for custodians, KYC providers, subchain operators.</li>
+        <li>Contact: <a href="mailto:info@nivonexus.ae" style="color:var(--accent);">info@nivonexus.ae</a> · Telegram <a href="https://t.me/nivonexus" target="_blank" style="color:var(--accent);">@nivonexus</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    Aurora Ledger · A NivoNexus product · Compliance-native, open-source L1 for RWAs
+  </footer>
+</body>
+</html>
