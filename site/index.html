@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora Ledger | Investor Preview</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #020617;
+      --card: rgba(15, 23, 42, 0.85);
+      --accent: #7dd3fc;
+      --accent-strong: #22d3ee;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.2), transparent 45%), var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      letter-spacing: 0.05em;
+    }
+    header p {
+      margin: 0 auto;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .cta {
+      margin-top: 2rem;
+      display: inline-flex;
+      gap: 0.75rem;
+    }
+    .cta a {
+      text-decoration: none;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cta a.primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+      color: #0f172a;
+      box-shadow: 0 15px 40px rgba(34, 211, 238, 0.25);
+    }
+    .cta a.secondary {
+      border-color: rgba(148, 163, 184, 0.4);
+      color: var(--text);
+    }
+    .cta a:hover { transform: translateY(-2px); }
+
+    main {
+      padding: 0 1.5rem 4rem;
+      display: grid;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: 0 20px 50px rgba(2, 6, 23, 0.6);
+    }
+    h2 {
+      margin-top: 0;
+      letter-spacing: 0.04em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      padding: 1.25rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      min-height: 180px;
+    }
+    .card h3 { margin-top: 0; }
+    ul {
+      padding-left: 1.1rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Aurora Ledger</h1>
+    <p>Institutional-grade Layer 1 for tokenized real-world assets. Compliance-aware modules, quantum-safe security, tenant subchains, and automation tooling—built entirely on open-source foundations.</p>
+    <div class="cta">
+      <a class="primary" href="../docs/whitepaper.md" target="_blank">Download Whitepaper</a>
+      <a class="secondary" href="#contact">Investor Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Why Aurora Ledger</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Compliance by Design</h3>
+          <p>On-chain KYC/KYB proofs, jurisdictional policies, and freeze controls integrated natively in the `compliance_core` module.</p>
+        </div>
+        <div class="card">
+          <h3>Custody Transparency</h3>
+          <p>Custodian attestations + price oracles anchor into `oracle_bridge`, gating mint/burn operations and audit reminders.</p>
+        </div>
+        <div class="card">
+          <h3>Quantum-Resistant Security</h3>
+          <p>Hybrid Dilithium/Falcon + secp256k1 signatures and PQC-enabled P2P links keep long-lived assets secure.</p>
+        </div>
+        <div class="card">
+          <h3>Automation + Subchains</h3>
+          <p>OpenClaw agents spin up tenant subchains, enforce guardrails, and monitor compliance in real time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tokenomics Snapshot</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Utility</h3>
+          <ul>
+            <li>Gas + transaction fees</li>
+            <li>Staking / validator collateral</li>
+            <li>Governance voting + compliance updates</li>
+            <li>Oracle + custodian incentives</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Distribution (1B AUR)</h3>
+          <ul>
+            <li>40% Community & staking rewards</li>
+            <li>20% Foundation / treasury</li>
+            <li>20% Strategic partners & custody integrations</li>
+            <li>15% Core contributors & automation agents</li>
+            <li>5% Liquidity & market making</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Fee Routing</h3>
+          <ul>
+            <li>60% Validators / stakers</li>
+            <li>20% Compliance + oracle operators</li>
+            <li>20% Treasury (audits, insurance, grants)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Roadmap</h2>
+      <ul>
+        <li><strong>Q1–Q2 2026:</strong> Compliance data model, PQC spec, internal devnet.</li>
+        <li><strong>Q3 2026:</strong> Public testnet with bridges, oracle feeds, subchain registration, audits begin.</li>
+        <li><strong>Q4 2026:</strong> Mainnet launch + governance token, first regulated asset issuances.</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Investor Contact</h2>
+      <p>Email: <a href="mailto:invest@auroraledger.ai">invest@auroraledger.ai</a></p>
+      <p>Telegram: @Nivodxb_bot (agent handoff)</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Aurora Ledger — Built on open-source infrastructure
+  </footer>
+</body>
+</html>
