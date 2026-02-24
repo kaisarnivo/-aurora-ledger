@@ -3,153 +3,260 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aurora Ledger | Investor Preview</title>
+  <title>Aurora Ledger | Institutional RWA L1</title>
   <style>
     :root {
-      color-scheme: light dark;
       --bg: #020617;
-      --card: rgba(15, 23, 42, 0.85);
-      --accent: #7dd3fc;
+      --bg-alt: #0b1224;
+      --card: rgba(15, 23, 42, 0.8);
+      --line: rgba(148, 163, 184, 0.2);
+      --accent: #38bdf8;
       --accent-strong: #22d3ee;
       --text: #f8fafc;
       --muted: #94a3b8;
+      --muted-strong: #cbd5f5;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.2), transparent 45%), var(--bg);
+      font-family: "Inter", "Space Grotesk", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(45, 212, 191, 0.12), transparent 45%),
+                  radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.25), transparent 40%),
+                  var(--bg);
       color: var(--text);
       min-height: 100vh;
-    }
-    header {
-      padding: 3rem 1.5rem 2rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0 0 1rem;
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      letter-spacing: 0.05em;
-    }
-    header p {
-      margin: 0 auto;
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 1.1rem;
       line-height: 1.6;
     }
+
+    header {
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    header p.lede {
+      max-width: 780px;
+      margin: 1.25rem auto 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .hero-cards {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+      border-radius: 1.25rem;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
     .cta {
       margin-top: 2rem;
-      display: inline-flex;
-      gap: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
     }
+
     .cta a {
       text-decoration: none;
-      padding: 0.85rem 1.6rem;
+      padding: 0.9rem 1.8rem;
       border-radius: 999px;
       font-weight: 600;
       border: 1px solid transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     .cta a.primary {
       background: linear-gradient(120deg, var(--accent), var(--accent-strong));
-      color: #0f172a;
-      box-shadow: 0 15px 40px rgba(34, 211, 238, 0.25);
+      color: #041022;
+      box-shadow: 0 15px 35px rgba(34, 211, 238, 0.25);
     }
+
     .cta a.secondary {
       border-color: rgba(148, 163, 184, 0.4);
       color: var(--text);
     }
+
     .cta a:hover { transform: translateY(-2px); }
 
     main {
-      padding: 0 1.5rem 4rem;
-      display: grid;
-      gap: 2rem;
+      padding: 0 1.5rem 5rem;
       max-width: 1200px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
+
     section {
       background: var(--card);
-      padding: 2rem;
+      padding: 2.5rem;
       border-radius: 1.5rem;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      box-shadow: 0 20px 50px rgba(2, 6, 23, 0.6);
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 80px rgba(2, 6, 23, 0.7);
     }
-    h2 {
+
+    section h2 {
       margin-top: 0;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted-strong);
     }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.8rem;
     }
+
     .card {
-      padding: 1.25rem;
-      border-radius: 1rem;
+      padding: 1.5rem;
+      border-radius: 1.1rem;
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      min-height: 180px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      min-height: 190px;
     }
-    .card h3 { margin-top: 0; }
-    ul {
-      padding-left: 1.1rem;
-      color: var(--muted);
-      line-height: 1.6;
+
+    .modules { margin-top: 1.2rem; }
+    .modules li { margin-bottom: 0.6rem; }
+
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0;
+      border-left: 2px solid rgba(148, 163, 184, 0.3);
     }
+
+    .timeline li {
+      padding-left: 1.2rem;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-strong);
+    }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    .contact a { color: var(--accent); }
+
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 3rem;
       color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 1.8rem; }
+      .card { min-height: auto; }
+      .hero-cards { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Aurora Ledger</h1>
-    <p>Institutional-grade Layer 1 for tokenized real-world assets. Compliance-aware modules, quantum-safe security, tenant subchains, and automation tooling—built entirely on open-source foundations.</p>
+    <p style="text-transform: uppercase; letter-spacing: 0.5em; font-size: 0.9rem; color: var(--muted);">Aurora Ledger</p>
+    <h1>Compliance-Native L1 for Real-World Assets</h1>
+    <p class="lede">Hybrid PQC security, on-chain KYC/KYB enforcement, custody attestations, and automation-ready subchains—built entirely on open-source infrastructure so institutional issuers can launch regulated assets without compromise.</p>
+
+    <div class="hero-cards">
+      <div class="hero-card">
+        <span>1B AUR</span>
+        Fixed supply governance + gas token with treasury yield and staking rewards.
+      </div>
+      <div class="hero-card">
+        <span>Q3 2026</span>
+        Public testnet with bridges, oracle feeds, and tenant subchains.
+      </div>
+      <div class="hero-card">
+        <span>24/7</span>
+        Automation agents monitoring compliance, custody, and liquidity.
+      </div>
+      <div class="hero-card">
+        <span>PQC</span>
+        Dilithium/Falcon + secp256k1 hybrids for cross-chain interoperability.
+      </div>
+    </div>
+
     <div class="cta">
       <a class="primary" href="../docs/whitepaper.md" target="_blank">Download Whitepaper</a>
-      <a class="secondary" href="#contact">Investor Contact</a>
+      <a class="secondary" href="#contact">Talk to Us</a>
     </div>
   </header>
 
   <main>
     <section>
-      <h2>Why Aurora Ledger</h2>
+      <h2>Core Pillars</h2>
       <div class="grid">
         <div class="card">
-          <h3>Compliance by Design</h3>
-          <p>On-chain KYC/KYB proofs, jurisdictional policies, and freeze controls integrated natively in the `compliance_core` module.</p>
+          <h3>Compliance Engine</h3>
+          <p>Hashed KYC/KYB proofs, jurisdiction flags, investor tiers, and freeze/pause controls enforced at the protocol layer.</p>
         </div>
         <div class="card">
-          <h3>Custody Transparency</h3>
-          <p>Custodian attestations + price oracles anchor into `oracle_bridge`, gating mint/burn operations and audit reminders.</p>
+          <h3>Custody Attestations</h3>
+          <p>Vault and fund data streamed via oracle_bridge; supply changes require attestation quorum + audit schedule adherence.</p>
         </div>
         <div class="card">
-          <h3>Quantum-Resistant Security</h3>
-          <p>Hybrid Dilithium/Falcon + secp256k1 signatures and PQC-enabled P2P links keep long-lived assets secure.</p>
+          <h3>Tenant Subchains</h3>
+          <p>Registered child chains inherit compliance guardrails while retaining custom settlement logic.</p>
         </div>
         <div class="card">
-          <h3>Automation + Subchains</h3>
-          <p>OpenClaw agents spin up tenant subchains, enforce guardrails, and monitor compliance in real time.</p>
+          <h3>Automation Agents</h3>
+          <p>OpenClaw orchestrators bootstrap validators, wire compliance rules, trigger alerts, and run lifecycle workflows.</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Tokenomics Snapshot</h2>
+      <h2>Tokenomics</h2>
       <div class="grid">
         <div class="card">
           <h3>Utility</h3>
           <ul>
             <li>Gas + transaction fees</li>
             <li>Staking / validator collateral</li>
-            <li>Governance voting + compliance updates</li>
-            <li>Oracle + custodian incentives</li>
+            <li>Governance votes and compliance updates</li>
+            <li>Oracle / custodian operator incentives</li>
           </ul>
         </div>
         <div class="card">
@@ -165,7 +272,7 @@
         <div class="card">
           <h3>Fee Routing</h3>
           <ul>
-            <li>60% Validators / stakers</li>
+            <li>60% Validators & stakers</li>
             <li>20% Compliance + oracle operators</li>
             <li>20% Treasury (audits, insurance, grants)</li>
           </ul>
@@ -175,22 +282,25 @@
 
     <section>
       <h2>Roadmap</h2>
-      <ul>
-        <li><strong>Q1–Q2 2026:</strong> Compliance data model, PQC spec, internal devnet.</li>
-        <li><strong>Q3 2026:</strong> Public testnet with bridges, oracle feeds, subchain registration, audits begin.</li>
-        <li><strong>Q4 2026:</strong> Mainnet launch + governance token, first regulated asset issuances.</li>
+      <ul class="timeline">
+        <li><strong>Q1–Q2 2026:</strong> Compliance data model, PQC implementation, internal devnet, automation agent tooling.</li>
+        <li><strong>Q3 2026:</strong> Public testnet with bridges, oracle feeds, tenant subchain registration, third-party audits kick off.</li>
+        <li><strong>Q4 2026:</strong> Mainnet launch with AUR governance token, treasury activation, first regulated asset issuances.</li>
       </ul>
     </section>
 
     <section id="contact">
       <h2>Investor Contact</h2>
-      <p>Email: <a href="mailto:invest@auroraledger.ai">invest@auroraledger.ai</a></p>
-      <p>Telegram: @Nivodxb_bot (agent handoff)</p>
+      <div class="contact">
+        <p>Email: <a href="mailto:info@nivonexus.ai">info@nivonexus.ai</a></p>
+        <p>Telegram: <a href="https://t.me/Nivodxb_bot" target="_blank">@Nivodxb_bot</a> for agent handoff</p>
+        <p>Deck + data room available upon request.</p>
+      </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Aurora Ledger — Built on open-source infrastructure
+    © 2026 Aurora Ledger — Building the open-source compliance L1 for RWAs.
   </footer>
 </body>
 </html>
