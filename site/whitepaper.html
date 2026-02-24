@@ -6,8 +6,8 @@
   <title>Aurora Ledger Whitepaper</title>
   <style>
     :root {
-      --bg: #040714;
-      --panel: rgba(8, 12, 28, 0.9);
+      --bg: #030710;
+      --panel: rgba(7, 11, 28, 0.92);
       --muted: #94a3b8;
       --text: #f8fafc;
       --accent: #38bdf8;
@@ -17,19 +17,16 @@
     body {
       margin: 0;
       font-family: "Space Grotesk", "Inter", sans-serif;
-      background: radial-gradient(circle at 20% 25%, rgba(56, 189, 248, 0.2), transparent 50%), var(--bg);
+      background: radial-gradient(circle at 20% 25%, rgba(56, 189, 248, 0.25), transparent 50%), var(--bg);
       color: var(--text);
       line-height: 1.7;
     }
     header {
       text-align: center;
-      padding: 3.5rem 1.5rem 2.5rem;
+      padding: 3rem 1.2rem 2.5rem;
     }
-    header h1 {
-      letter-spacing: 0.08em;
-      margin-bottom: 0.5rem;
-    }
-    header p { max-width: 800px; margin: 0.5rem auto; color: var(--muted); }
+    header h1 { letter-spacing: 0.08em; margin: 0.4rem 0; }
+    header p { max-width: 780px; margin: 0.5rem auto; color: var(--muted); }
     main {
       max-width: 960px;
       margin: 0 auto;
@@ -43,7 +40,7 @@
       border: 1px solid rgba(148, 163, 184, 0.25);
       border-radius: 1.25rem;
       padding: 2rem;
-      box-shadow: 0 25px 70px rgba(2, 6, 23, 0.7);
+      box-shadow: 0 25px 70px rgba(2, 6, 23, 0.65);
     }
     section h2 {
       margin-top: 0;
@@ -65,18 +62,13 @@
       vertical-align: top;
     }
     pre {
-      background: rgba(5, 9, 22, 0.95);
+      background: rgba(6, 10, 24, 0.95);
       border-radius: 1rem;
       padding: 1rem;
       overflow-x: auto;
       font-size: 0.9rem;
       color: var(--muted);
       border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-    .split {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
     }
     footer {
       text-align: center;
@@ -115,34 +107,35 @@
         <li>Governance & Operations</li>
         <li>Risk & Mitigation</li>
         <li>Appendix</li>
-      <li>VARA Regulatory Alignment</li>
+        <li>VARA Regulatory Alignment</li>
+        <li>References</li>
       </ol>
     </section>
 
     <section>
       <h2>1 · Executive Summary</h2>
-      <p>Aurora Ledger is a Cosmos-SDK Layer 1 crafted by <strong>NivoNexus</strong> for regulated RWAs. The chain embeds compliance logic, custody attestations, PQ security, and automation hooks directly into consensus. Issuers can tokenize funds, metals, private credit, treasuries, or real-estate SPVs using the `AUR` token for gas + governance.</p>
+      <p>Aurora Ledger is a Cosmos-SDK Layer 1 engineered by <strong>NivoNexus</strong> for regulated RWAs. Compliance logic, custody attestations, PQ security, and automation hooks live at the base layer, letting issuers tokenize funds, metals, credit, treasuries, and real-estate SPVs using a single gas/governance token (`AUR`).</p>
       <ul>
-        <li>Compliance-by-design: deterministic enforcement of policies, jurisdiction caps, freeze/pause tools.</li>
-        <li>Custody transparency: supply changes gated by oracle-verified proof-of-reserves.</li>
-        <li>PQC-ready: hybrid Dilithium/Falcon + secp256k1 signatures, PQ TLS, and light-client roadmap.</li>
-        <li>Automation-native: OpenClaw agents handle provisioning, monitoring, and emergency actions.</li>
-        <li>Private subchains: tenant-specific execution layers inherit settlement security and compliance guardrails.</li>
+        <li>Compliance-by-design with deterministic investor eligibility, Travel Rule capture, and freeze/pause tools.</li>
+        <li>Custody assurance through oracle-verified proof-of-reserves before any supply change.</li>
+        <li>PQC roadmap (Dilithium/Falcon + secp256k1, PQ TLS) for multi-decade security.</li>
+        <li>Automation-native OpenClaw agents for bootstrap, monitoring, and incident response.</li>
+        <li>Private subchains inheriting settlement security and compliance guardrails.</li>
       </ul>
     </section>
 
     <section>
       <h2>2 · Market Landscape & Opportunity</h2>
-      <p>Tokenized assets are forecast to exceed <strong>$10T</strong> by 2030, yet adoption is slowed by fragmented compliance tooling, opaque custody attestations, and security uncertainty. Aurora Ledger offers a unified, open-source platform where regulators, custodians, and issuers share a verifiable state machine.</p>
+      <p>Tokenized assets are forecast to surpass <strong>$10T</strong> by 2030 (BCG/ADDX). Adoption is slowed by fragmented compliance, opaque custody, missing PQ roadmaps, and operational friction. Aurora replaces point solutions with a unified, open platform aligned with VARA, FATF, and traditional controls.</p>
     </section>
 
     <section>
       <h2>3 · Vision & Value Proposition</h2>
       <ul>
-        <li><strong>Trust:</strong> deterministic compliance reduces manual review.</li>
-        <li><strong>Transparency:</strong> public audit trails for custody data and policy decisions.</li>
-        <li><strong>Automation:</strong> agent-driven ops eliminate human toil while retaining governance checkpoints.</li>
-        <li><strong>Future readiness:</strong> modular subchains, bridges, and PQ security keep Aurora adaptable.</li>
+        <li><strong>Trust:</strong> deterministic enforcement reduces examiner friction.</li>
+        <li><strong>Transparency:</strong> regulators view custody deltas and policy changes in real time.</li>
+        <li><strong>Automation:</strong> agent-driven ops handle onboarding, monitoring, and freezes.</li>
+        <li><strong>Future readiness:</strong> PQ security, modular subchains, programmable bridges.</li>
       </ul>
     </section>
 
@@ -152,11 +145,13 @@
     subgraph Experience Layer
         UI[Asset Manager Portal]
         Wallets[Investor Wallets]
+        RegPortal[Regulator Dashboard]
     end
 
     subgraph Control Layer
         Agent[Automation Agent]
         Treasury[Treasury & Governance]
+        Analytics[Monitoring & Reporting]
     end
 
     subgraph Core Chain
@@ -178,6 +173,7 @@
     UI --> Registry
     UI --> Compliance
     Wallets --> Treasury
+    RegPortal --> Compliance
     Agent --> Registry
     Agent --> Compliance
     Agent --> Oracle
@@ -195,77 +191,61 @@
 
     <section>
       <h2>5 · Compliance & Custody Flow</h2>
+      <p>Aurora’s compliance engine is mapped to the Dubai VARA Rulebooks (Market Conduct, AML/CFT, Technology & Governance).</p>
       <pre><code>graph LR
     Investor -->|KYC/KYB| Provider
-    Provider -->|Credential| ComplianceCore
+    Provider -->|Credential Hash| ComplianceCore
     ComplianceCore -->|Eligibility Proof| Transfer
     Custodian -->|Vault Attestation| OracleBridge
+    Auditor -->|Audit Hash| OracleBridge
     OracleBridge -->|Quorum Proof| MintBurn
     MintBurn --> Ledger
 </code></pre>
       <ol>
-        <li><strong>Attestations:</strong> Providers issue signed credentials; hashes + expiry metadata reside in `compliance_core`.</li>
-        <li><strong>Transfers:</strong> every operation checks eligibility, jurisdiction, lockups, sanctions lists.</li>
-        <li><strong>Custody gating:</strong> mint/burn requires custodian + auditor quorum via `oracle_bridge`.</li>
-        <li><strong>Monitoring:</strong> automation agents track deviations and trigger freezes or alerts.</li>
-      <li>VARA Regulatory Alignment</li>
+        <li>Approved providers issue signed credentials; hashes + expiry metadata stored in `compliance_core`.</li>
+        <li>Transfers/mints reference eligibility, jurisdiction, lockups, Travel Rule, and sanctions lists.</li>
+        <li>Custody quorum (custodian + auditor) signs off before supply changes; automation compares reserves to supply.</li>
+        <li>Travel Rule automation packages originator/beneficiary hashes for licensed VASPs.</li>
       </ol>
     </section>
 
     <section>
       <h2>6 · Security & PQC Strategy</h2>
       <table>
-        <tr><th>Layer</th><th>Today</th><th>PQC Augment</th><th>Status</th></tr>
+        <tr><th>Layer</th><th>Current</th><th>PQC Augment</th><th>Status</th></tr>
         <tr><td>Validators</td><td>secp256k1</td><td>Dilithium-3</td><td>Devnet complete; testnet Q3 2026</td></tr>
-        <tr><td>User wallets</td><td>secp256k1</td><td>Optional Falcon-1024</td><td>Wallet partner rollout post-mainnet</td></tr>
-        <tr><td>Bridges/Subchains</td><td>ECDSA proofs</td><td>PQ aggregate proofs</td><td>Spec in progress</td></tr>
+        <tr><td>Smart contracts</td><td>secp256k1</td><td>Falcon-1024 optional</td><td>Integration in progress</td></tr>
+        <tr><td>Bridges/Subchains</td><td>ECDSA proofs</td><td>PQ aggregate proofs</td><td>Spec with IBC group</td></tr>
+        <tr><td>P2P/RPC</td><td>TLS 1.3</td><td>PQ TLS (Kyber)</td><td>Prototype on staging</td></tr>
       </table>
-      <p>Additional controls: PQ TLS on P2P/RPC links, HSM support, rotation policies enforced by automation, multi-stage audits + bug bounty.</p>
+      <p>Key management features include multi-key wallets, enforced rotation, HSM support, and automation-driven ceremonies. Multi-stage audits and bug bounties cover chain, bridges, and automation scripts.</p>
     </section>
 
     <section>
       <h2>7 · Private Subchains & Automation</h2>
-      <div class="split">
-        <div>
-          <h3>Private Subchains</h3>
-          <ul>
-            <li>Dedicated execution layers (consumer chains / rollups).</li>
-            <li>Reference `compliance_core` via cross-chain calls.</li>
-            <li>Set custom fee schedules, privacy modes, oracle sets.</li>
-            <li>Settle back to Aurora L1 using AUR-based shared security.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Automation (OpenClaw)</h3>
-          <ul>
-            <li>Provisioning: binaries, genesis, validators, compliance templates.</li>
-            <li>Lifecycle ops: investor onboarding, lockups, key rotations.</li>
-            <li>Monitoring: telemetry → Grafana/Prometheus, incident routing.</li>
-            <li>Fail-safes: automatic freezes when custody deviates.</li>
-          </ul>
-        </div>
-      </div>
+      <p>Tenant subchains (Cosmos consumer chains / rollups) inherit compliance templates, reference `compliance_core`, and settle to mainnet. Automation agents deploy binaries, configure validators, manage onboarding, and monitor metrics with fail-safes that freeze assets on custody divergence.</p>
     </section>
 
     <section>
       <h2>8 · Use Cases</h2>
       <ul>
-        <li><strong>Institutional Funds:</strong> multi-class funds with region-specific caps and redemption windows.</li>
-        <li><strong>Precious Metals:</strong> vault attestations gate mints; investors hold fractions with proof-of-reserves.</li>
-        <li><strong>Private Credit:</strong> borrower KYC + collateral verification; repayment waterfalls on private subchains.</li>
-        <li><strong>Tokenized Treasuries:</strong> automated coupon distributions, compliance visibility.</li>
-        <li><strong>Real-Estate SPVs:</strong> property-specific subchains isolating risk while settling on L1.</li>
+        <li><strong>Institutional Funds:</strong> multi-class structures with jurisdiction caps and automated disclosures.</li>
+        <li><strong>Precious Metals:</strong> vault attestations (weight, purity, insurance) gate mints; 24/7 proof-of-reserves.</li>
+        <li><strong>Private Credit:</strong> borrower KYC + collateral verification, repayment waterfalls on private subchains.</li>
+        <li><strong>Tokenized Treasuries:</strong> automated coupon distributions and transparent VARA/FATF reporting.</li>
+        <li><strong>Real-Estate SPVs:</strong> property-specific subchains isolate risk while settling on L1.</li>
+        <li><strong>Green Finance:</strong> ESG attestations and oracle feeds validating sustainability claims.</li>
       </ul>
     </section>
 
     <section>
       <h2>9 · Tokenomics (AUR)</h2>
       <table>
-        <tr><th>Supply</th><td>1,000,000,000 AUR (fixed cap)</td></tr>
+        <tr><th>Supply</th><td>1,000,000,000 AUR (fixed)</td></tr>
         <tr><th>Utility</th><td>Gas, staking, governance, compliance/oracle bonding, subchain security</td></tr>
-        <tr><th>Fee routing</th><td>60% validators/stakers · 20% compliance/oracle operators · 20% treasury</td></tr>
+        <tr><th>Fee Routing</th><td>60% validators/stakers · 20% compliance/oracle operators · 20% treasury</td></tr>
         <tr><th>Distribution</th><td>40% community/staking · 20% treasury · 20% strategic partners · 15% contributors/automation · 5% liquidity</td></tr>
-        <tr><th>Value accrual</th><td>Network fees, subchain settlement, bridge tolls, compliance service subscriptions, treasury yield</td></tr>
+        <tr><th>Value Accrual</th><td>Network fees, subchain settlement, bridge tolls, compliance services, treasury yield</td></tr>
       </table>
     </section>
 
@@ -273,10 +253,10 @@
       <h2>10 · Roadmap & Execution Plan</h2>
       <table>
         <tr><th>Phase</th><th>Timeline</th><th>Highlights</th></tr>
-        <tr><td>Foundations</td><td>Q1–Q2 2026</td><td>Compliance schema, PQC prototype, automation v1, devnet, custody integrations</td></tr>
+        <tr><td>Foundations</td><td>Q1–Q2 2026</td><td>Compliance schema, VARA mapping, PQC prototype, automation v1, devnet</td></tr>
         <tr><td>Testnet & Audits</td><td>Q3 2026</td><td>Public testnet, ERC-1400 + ICS-20 bridges, subchain registry, security audits</td></tr>
         <tr><td>Mainnet Launch</td><td>Q4 2026</td><td>AUR distribution, treasury activation, first regulated issuances, insurance fund</td></tr>
-        <tr><td>Expansion</td><td>2027+</td><td>PQ light clients, cross-jurisdiction compliance packs, institutional partnerships</td></tr>
+        <tr><td>Expansion</td><td>2027+</td><td>PQ light clients, cross-jurisdiction packs, institutional partnerships</td></tr>
       </table>
     </section>
 
@@ -293,44 +273,53 @@
 
     <section>
       <h2>12 · Governance & Operations</h2>
-      <p>Phase 0 multisig guardianship (NivoNexus + partners) transitions to on-chain governance post-mainnet. Automation agents operate under auditable playbooks with human approval for external actions. Quarterly reports cover treasury, compliance, custody, and roadmap metrics.</p>
+      <p>Phase 0 multisig (NivoNexus + partners) manages upgrades and treasury spend per VARA Technology & Governance requirements. On-chain governance activates post-mainnet (AUR holders). Quarterly transparency reports cover treasury, compliance metrics, custody audits, and roadmap progress. Automation agents operate under auditable playbooks with human approval for external actions.</p>
     </section>
 
     <section>
       <h2>13 · Risk & Mitigation</h2>
       <table>
         <tr><th>Risk</th><th>Mitigation</th></tr>
-        <tr><td>Regulatory shifts</td><td>Modular templates, legal advisory council, ability to pause asset series</td></tr>
+        <tr><td>Regulatory shifts</td><td>Modular templates, legal advisory council, pause controls</td></tr>
         <tr><td>Oracle/custody failure</td><td>Multi-source attestations, slashing, insurance fund, automated freezes</td></tr>
         <tr><td>PQC delays</td><td>Hybrid signatures, participation in standards bodies, staged rollout</td></tr>
-        <tr><td>Smart contract bugs</td><td>Multi-stage audits, formal verification, bug bounty</td></tr>
-        <tr><td>Liquidity gaps</td><td>Treasury-managed market making, incentives for early DEX/bridge partners</td></tr>
+        <tr><td>Smart contract bugs</td><td>Audits, formal verification, bug bounty</td></tr>
+        <tr><td>Liquidity gaps</td><td>Treasury-managed market making, incentives for DEX/bridge partners</td></tr>
+        <tr><td>Operational failure</td><td>Automation fail-safes, redundant infra, SOC 2-style controls</td></tr>
       </table>
+    </section>
+
+    <section>
+      <h2>14 · Appendix</h2>
+      <ul>
+        <li>Glossary: RWA, PQC, ICS-20, OCR, Subchain, AUR.</li>
+        <li>Partner programs for custodians, KYC providers, subchain operators, oracle networks.</li>
+        <li>Contact: <a href="mailto:info@nivonexus.ae" style="color:var(--accent);">info@nivonexus.ae</a> · Telegram <a href="https://t.me/nivonexus" target="_blank" style="color:var(--accent);">@nivonexus</a></li>
+      </ul>
     </section>
 
     <section>
       <h2>15 · VARA Regulatory Alignment</h2>
       <ul>
         <li>Built to satisfy Dubai VARA Rulebooks for VASPs (Market Conduct, AML/CFT, Technology & Governance).</li>
-        <li>Compliance templates mirror VARA licensing categories (Broker-Dealer, Custody, Advisory, Exchange) with pre-approved controls.</li>
-        <li>Travel Rule automation captures originator/beneficiary hashes and shares them via secure VASP APIs.</li>
-        <li>Custody attestations include segregated account proofs so operators can evidence VARA custody requirements.</li>
-        <li>Incident response packets (timeline, impacted wallets, remediation) are auto-generated for VARA notifications.</li>
-      </ul>
-      <h3>Operating in Dubai</h3>
-      <ul>
-        <li>NivoNexus maintains a governance playbook aligning protocol upgrades with VARA approval processes.</li>
-        <li>Private subchains for UAE issuers ship with bilingual disclosures, Shariah tags, geo-fencing, and reporting hooks.</li>
-        <li>Partners (custodians, brokers, advisors) can onboard using VARA-aligned templates, accelerating licensing reviews.</li>
+        <li>Compliance templates mirror VARA licensing categories (Broker-Dealer, Custody, Advisory, Exchange).</li>
+        <li>Travel Rule automation packages originator/beneficiary hashes for licensed VASPs.</li>
+        <li>Custody attestations include segregated account proofs to evidence VARA custody requirements.</li>
+        <li>Incident-response packets (timeline, impacted wallets, remediation) auto-generate for VARA notifications.</li>
+        <li>Private subchains for UAE issuers ship with bilingual disclosures, Shariah options, and geo-fencing.</li>
       </ul>
     </section>
+
     <section>
-      <h2>14 · Appendix</h2>
-      <ul>
-        <li>Glossary: RWAs, PQC, ICS-20, OCR, Subchain, AUR.</li>
-        <li>Partner programs: onboarding for custodians, KYC providers, subchain operators, oracle networks.</li>
-        <li>Contact: <a href="mailto:info@nivonexus.ae" style="color:var(--accent);">info@nivonexus.ae</a> · Telegram <a href="https://t.me/nivonexus" target="_blank" style="color:var(--accent);">@nivonexus</a></li>
-      </ul>
+      <h2>16 · References</h2>
+      <ol>
+        <li>Dubai Virtual Assets Regulatory Authority – Market Conduct, AML/CFT, Technology & Governance Rulebooks (2023).</li>
+        <li>FATF – Guidance for a Risk-Based Approach to Virtual Assets and VASPs (2021).</li>
+        <li>Boston Consulting Group & ADDX – "Reaching New Heights in Asset Tokenization" (2022).</li>
+        <li>BIS – Project Guardian tokenized securities settlement reports (2023–2024).</li>
+        <li>Chainlink – Proof-of-Reserve Architecture (2024).</li>
+        <li>NIST PQC Program – Dilithium, Falcon, Kyber specifications.</li>
+      </ol>
     </section>
   </main>
   <footer>
