@@ -19,6 +19,7 @@ _Last updated: 2026-02-24_
 12. [Governance & Operations](#12-governance--operations)
 13. [Risk & Mitigation](#13-risk--mitigation)
 14. [Appendix](#14-appendix)
+15. [VARA Regulatory Alignment](#15-vara-regulatory-alignment)
 
 ---
 
@@ -105,6 +106,8 @@ graph TB
 6. **`subchain_manager`** – Registers tenant subchains (consumer chains / rollups), shares compliance guardrails, and handles settlement.
 
 ## 5. Compliance & Custody Flow
+Aurora Ledger’s compliance engine is mapped to the Dubai VARA Rulebooks (Market Conduct, AML/CFT, Technology & Governance) so VASPs can demonstrate adherence without bolting on external systems.
+
 ```
 graph LR
     Investor -->|KYC/KYB| Provider
@@ -202,10 +205,29 @@ graph TD
 | Liquidity gaps | Treasury-managed market making, incentives for early DEX/bridge partners |
 | Operational failure | Automation fail-safes, redundant infra, SOC 2-style controls |
 
+
 ## 14. Appendix
 - **Glossary:** RWA, PQC, ICS-20, OCR, Subchain, AUR.
 - **Partner Programs:** onboarding for custodians, KYC providers, subchain operators, and oracle networks.
 - **Contact:** `info@nivonexus.ae` · Telegram `@nivonexus`
 
+
+## 15. VARA Regulatory Alignment
+- Aurora Ledger is engineered to satisfy the Dubai Virtual Assets Regulatory Authority (VARA) frameworks for VASPs.
+- Compliance templates map directly to VARA licensing categories (Broker-Dealer, Custody, Advisory, Exchange).
+- The compliance engine enforces VARA’s Market Conduct Rulebook requirements, including Travel Rule traceability, sanctions screening, and public disclosures.
+- Audit-ready logs capture onboarding, suitability checks, suspicious activity escalation, and custodial segregation, enabling rapid inspections.
+
+### VARA-Specific Controls
+1. **Travel Rule Automation** – Every transaction above the VARA threshold captures originator/beneficiary data hashes and makes them available to registered VASPs via secure APIs.
+2. **Risk-Based Segmentation** – Investor tiers encode VARA risk ratings (low, standard, high) and dynamically adjust monitoring frequency, leveraging automation agents for follow-ups.
+3. **Custody Segregation** – Oracle attestations include proof of segregated omnibus vs. omnibus-pro+ accounts so custodians can evidence VARA Rulebook compliance.
+4. **Marketing & Disclosure Hooks** – Asset registry entries store disclosure artefacts (prospectus, risk statements) with versioning; automation agents remind issuers to refresh them per VARA timelines.
+5. **Incident Response** – Freeze/pause workflows integrate with VARA notification requirements, producing signed incident packages (timeline, impacted wallets, remediation) automatically.
+
+### Operating in Dubai
+- NivoNexus maintains a governance playbook that maps Aurora’s protocol changes to VARA approval processes to avoid unlicensed updates.
+- Ecosystem partners (custodians, brokers, advisors) can plug into pre-built compliance templates aligned with their VARA licenses, accelerating onboarding.
+- Private subchains designated for UAE issuers inherit VARA-specific defaults (Arabic/English disclosures, Shariah tagging, geo-fencing) while remaining configurable for other jurisdictions.
 ---
 **Aurora Ledger** · A NivoNexus product · Compliance-native, open-source L1 for real-world assets.
